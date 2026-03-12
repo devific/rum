@@ -15,14 +15,7 @@ export default function Home() {
       <BrandStatement />
       <RumShowcase />
       <TheSpirit />
-      {typeof window !== 'undefined' && window.innerWidth >= 768 ? (
-        <HorizontalRumScroll />
-      ) : (
-        <div className="bg-bg-mid py-20 px-6 text-center">
-          <h2 className="font-display text-5xl text-primary-gold mb-4">SCROLL TO MEET THE CREW</h2>
-          <p className="font-body text-cream">View our rums on desktop for the full experience, or check out the lineup above.</p>
-        </div>
-      )}
+      <HorizontalRumScroll />
       <Manifesto />
       <Testimonials />
       <CTABanner />

@@ -11,12 +11,15 @@ export function HorizontalRumScroll() {
   });
 
   // Map scroll progress to horizontal translation
-  const x = useTransform(scrollYProgress, [0, 1], ["0%", `-${(rums.length - 1) * 100}vw`]);
+  const x = useTransform(
+    scrollYProgress,
+    [0, 1],
+    ["0%", `-${(rums.length - 1) * 100}vw`],
+  );
 
   return (
     <section ref={targetRef} className="relative h-[600vh] bg-bg-mid">
       <div className="sticky top-0 h-screen flex items-center overflow-hidden">
-        
         {/* Label */}
         <div className="absolute top-24 left-1/2 -translate-x-1/2 z-50 flex flex-col items-center">
           <SectionLabel text="SCROLL TO MEET THE CREW" className="mb-2" />
@@ -46,22 +49,23 @@ export function HorizontalRumScroll() {
               />
 
               {/* Giant Background Quote */}
-              <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-[0.07] overflow-hidden">
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-[0.07] overflow-hidden z-40">
                 <h2 className="font-accent italic text-[15vw] text-cream whitespace-nowrap leading-none text-center">
                   "{rum.tagline}"
                 </h2>
               </div>
 
               <div className="max-w-7xl mx-auto px-6 md:px-12 w-full grid grid-cols-1 md:grid-cols-12 gap-8 items-center relative z-10 h-full">
-                
                 {/* Left: Giant Name */}
                 <div className="md:col-span-4 flex flex-col justify-center h-full">
-                  <h2 
+                  <h2
                     className="font-display text-[12vw] md:text-[8vw] leading-[0.85] tracking-wide"
                     style={{ color: rum.color }}
                   >
                     {rum.name.split(" ").map((word, i) => (
-                      <span key={i} className="block">{word}</span>
+                      <span key={i} className="block">
+                        {word}
+                      </span>
                     ))}
                   </h2>
                 </div>
@@ -69,10 +73,16 @@ export function HorizontalRumScroll() {
                 {/* Center: Bottle */}
                 <div className="md:col-span-4 h-[60vh] md:h-[80vh] flex items-center justify-center relative">
                   <motion.div
-                    className="w-full h-full max-w-[300px]"
-                    style={{ y: useTransform(scrollYProgress, [0, 1], [0, 100]) }} // Parallax effect
+                    className="w-full h-full max-w-[300px] z-0"
+                    style={{
+                      y: useTransform(scrollYProgress, [0, 1], [0, 100]),
+                    }} // Parallax effect
                   >
-                    <FloatingBottle color={rum.color} name={rum.name} imageUrl={rum.bottleImage} />
+                    <FloatingBottle
+                      color={rum.color}
+                      name={rum.name}
+                      imageUrl={rum.bottleImage}
+                    />
                   </motion.div>
                 </div>
 
@@ -86,13 +96,15 @@ export function HorizontalRumScroll() {
                   </p>
                   <div className="flex flex-wrap gap-2 justify-start md:justify-end">
                     {rum.tags.map((tag) => (
-                      <span key={tag} className="font-label text-sm px-4 py-2 rounded-full border border-primary-coral text-primary-coral">
+                      <span
+                        key={tag}
+                        className="font-label text-sm px-4 py-2 rounded-full border border-primary-coral text-primary-coral"
+                      >
                         {tag}
                       </span>
                     ))}
                   </div>
                 </div>
-
               </div>
             </div>
           ))}

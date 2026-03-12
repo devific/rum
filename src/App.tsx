@@ -18,6 +18,7 @@ import RumListing from "@/pages/RumListing";
 import RumDetail from "@/pages/RumDetail";
 import StoreLocator from "@/pages/StoreLocator";
 import DistilleryTour from "@/pages/DistilleryTour";
+import { ScrollToTop } from "./components/ScrollToTop";
 
 function ScrollProgressBar() {
   const progress = useScrollProgress();
@@ -55,6 +56,7 @@ function AnimatedRoutes() {
 export default function App() {
   return (
     <Router>
+      <ScrollToTop />
       <AgeGate />
       <CustomCursor />
       <div className="grain-overlay" />
