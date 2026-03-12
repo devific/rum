@@ -1,4 +1,9 @@
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
@@ -12,6 +17,7 @@ import Contact from "@/pages/Contact";
 import RumListing from "@/pages/RumListing";
 import RumDetail from "@/pages/RumDetail";
 import StoreLocator from "@/pages/StoreLocator";
+import DistilleryTour from "@/pages/DistilleryTour";
 
 function ScrollProgressBar() {
   const progress = useScrollProgress();
@@ -38,7 +44,8 @@ function AnimatedRoutes() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/rums" element={<RumListing />} />
           <Route path="/rums/:id" element={<RumDetail />} />
-          <Route path="/store-locator" element={<StoreLocator />} />
+          <Route path="/stores" element={<StoreLocator />} />
+          <Route path="/distillery" element={<DistilleryTour />} />
         </Routes>
       </motion.div>
     </AnimatePresence>
@@ -52,7 +59,7 @@ export default function App() {
       <CustomCursor />
       <div className="grain-overlay" />
       <ScrollProgressBar />
-      
+
       <div className="flex flex-col min-h-screen">
         <Navbar />
         <main className="flex-grow">

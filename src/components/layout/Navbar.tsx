@@ -9,7 +9,8 @@ const navLinks = [
   { name: "HOME", path: "/" },
   { name: "OUR RUMS", path: "/rums" },
   { name: "ABOUT", path: "/about" },
-  { name: "STORE LOCATOR", path: "/store-locator" },
+  { name: "DISTILLERY", path: "/distillery" },
+  { name: "STORES", path: "/stores" },
   { name: "CONTACT", path: "/contact" },
 ];
 
@@ -38,14 +39,16 @@ export function Navbar() {
         transition={{ duration: 0.8, delay: 0.3 }}
         className={cn(
           "fixed top-0 left-0 right-0 z-50 transition-all duration-500 px-6 md:px-12 py-4 flex items-center justify-between",
-          scrolled ? "bg-bg-dark/90 backdrop-blur-lg border-b border-border-warm" : "bg-transparent"
+          scrolled
+            ? "bg-bg-dark/90 backdrop-blur-lg border-b border-border-warm"
+            : "bg-transparent",
         )}
       >
         <Link to="/" className="flex flex-col items-start group">
           {config.useImageLogo ? (
-            <motion.img 
-              src={config.logoUrl} 
-              alt="Pex Rum Logo" 
+            <motion.img
+              src={config.logoUrl}
+              alt="Pex Rum Logo"
               className="h-12 w-auto object-contain"
               initial={{ scale: 0.8 }}
               animate={{ scale: 1 }}
@@ -53,7 +56,7 @@ export function Navbar() {
             />
           ) : (
             <>
-              <motion.span 
+              <motion.span
                 initial={{ scale: 0.8 }}
                 animate={{ scale: 1 }}
                 transition={{ type: "spring" }}
@@ -84,7 +87,7 @@ export function Navbar() {
 
         <div className="hidden lg:block">
           <Link
-            to="/store-locator"
+            to="/stores"
             className="bg-primary-coral text-white font-display text-xl px-6 py-2 rounded-full hover:bg-accent-lime hover:text-bg-dark transition-colors duration-300 hover:scale-105 inline-block"
           >
             FIND A STORE
@@ -131,7 +134,7 @@ export function Navbar() {
               transition={{ delay: 0.8 }}
             >
               <Link
-                to="/store-locator"
+                to="/stores"
                 className="bg-primary-coral text-white font-display text-3xl px-8 py-3 rounded-full mt-4 inline-block"
               >
                 FIND A STORE

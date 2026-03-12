@@ -85,7 +85,7 @@ export function Hero() {
               transition={{ type: "spring", delay: 1.95 }}
             >
               <Link
-                to="/store-locator"
+                to="/stores"
                 className="flex items-center justify-center gap-2 border-2 border-primary-gold text-cream font-display text-2xl px-8 py-4 rounded-full hover:bg-primary-gold hover:text-bg-dark transition-colors duration-300 w-full"
               >
                 <MapPin className="w-5 h-5" />
