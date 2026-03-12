@@ -1,0 +1,122 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg-dark: #0a0500;
+  --color-bg-mid: #1a0c00;
+  --color-bg-warm: #2b1200;
+  --color-primary-gold: #f5a623;
+  --color-primary-coral: #ff5c35;
+  --color-accent-lime: #c8f135;
+  --color-accent-teal: #00c9b1;
+  --color-cream: #fff5e0;
+  --color-text-light: #ffe8b8;
+  --color-text-muted: #8a6d4b;
+  --color-card-surface: #1e0e00;
+  --color-border-warm: #3d2200;
+
+  --font-display: "Bebas Neue", sans-serif;
+  --font-accent: "Playfair Display", serif;
+  --font-body: "DM Sans", sans-serif;
+  --font-label: "Special Elite", monospace;
+}
+
+@layer base {
+  body {
+    @apply bg-bg-dark text-cream font-body overflow-x-hidden;
+    cursor: none; /* Custom cursor will handle this */
+  }
+
+  h1,
+  h2,
+  h3,
+  .font-display {
+    @apply font-display tracking-wide leading-[0.95];
+  }
+
+  h4,
+  .font-accent {
+    @apply font-accent italic leading-tight;
+  }
+
+  .font-label {
+    @apply font-label uppercase tracking-widest;
+  }
+}
+
+@layer utilities {
+  .text-glow {
+    text-shadow: 0 0 20px rgba(245, 166, 35, 0.4);
+  }
+
+  .box-glow {
+    box-shadow: 0 0 60px rgba(245, 166, 35, 0.2);
+  }
+
+  .box-glow-hover:hover {
+    box-shadow: 0 0 100px rgba(245, 166, 35, 0.45);
+  }
+}
+
+/* Grain Overlay */
+.grain-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.06;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+* {
+  cursor: none;
+}
+
+/* Marquee Animation */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 25s linear infinite;
+}
+
+.animate-marquee-reverse {
+  animation: marquee 25s linear infinite reverse;
+}
+
+/* Rotating Badge */
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
+
+/* 3D Transforms */
+.perspective-1000 {
+  perspective: 1000px;
+}
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+.backface-hidden {
+  backface-visibility: hidden;
+}
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
