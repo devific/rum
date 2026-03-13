@@ -20,6 +20,23 @@ export function AgeGate() {
     window.location.href = "https://www.youtube.com/watch?v=2HTHPtoNJLk&t=19s";
   };
 
+  // keyboard shortcut
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const handleKeyDown = (e) => {
+      if (e.key === "y" || e.key === "Y" || e.key === "Enter") {
+        handleVerify();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isOpen]);
+
   return (
     <AnimatePresence>
       {isOpen && (
@@ -40,6 +57,7 @@ export function AgeGate() {
               <br />
               FOR THIS?
             </h1>
+
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <button
                 onClick={handleVerify}
@@ -47,6 +65,7 @@ export function AgeGate() {
               >
                 YES, POUR ME IN
               </button>
+
               <button
                 onClick={handleDecline}
                 className="border-2 border-border-warm text-text-muted font-display text-2xl px-10 py-4 rounded-full hover:border-primary-gold hover:text-primary-gold transition-colors duration-300"
